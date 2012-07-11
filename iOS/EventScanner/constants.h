@@ -1,0 +1,2 @@
+# define kREG_URL @"https://hutchinsonbuilders.secure.force.com/registration/eventforce__mobilecheckin?regsiteId=a0S90000000jhz3"
+# define kTESTFLIGHT @"bf53ac17bc7a2389ecdd6e54c37a896e_OTI2ODYyMDEyLTA1LTIyIDE2OjE0OjEwLjQzMTI3OA"
