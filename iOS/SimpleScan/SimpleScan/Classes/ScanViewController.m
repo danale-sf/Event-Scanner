@@ -80,7 +80,7 @@
     // do something useful with results
     for(ZBarSymbol *sym in syms) {
         
-        scannedText = [[NSString alloc] initWithFormat:sym.data];
+        scannedText = [[NSString alloc] initWithFormat:@"%@",sym.data];
         NSLog(@"My scan results: %@",scannedText);
 
         resultText.text = scannedText;

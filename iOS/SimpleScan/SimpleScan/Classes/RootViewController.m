@@ -52,10 +52,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"";
-    LaunchViewController *launchView = [[LaunchViewController alloc] init];
+    LaunchViewController *launchView = [[[LaunchViewController alloc] initWithNibName:@"LaunchViewController" bundle:nil] autorelease];
     [self pushViewController:launchView animated:NO];
-    [launchView release];
 }
 
 @end

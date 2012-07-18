@@ -72,10 +72,10 @@
     for (NSDictionary *obj in returnedArray) {
         NSLog(@"presenceID: %@",presenceID);
         // NSLog(@"obj: %@",obj);
-        contactInfo = [[NSDictionary alloc] initWithDictionary:[obj objectForKey:@"Contact__r"]];
+        contactInfo = [[NSDictionary alloc] initWithDictionary:[obj objectForKey:@"Contact__r"]] ;
         NSLog(@"contactInfo: %@",contactInfo);
                 
-        nameLabel.text = [[NSString alloc] initWithFormat:@"%@ %@",[contactInfo objectForKey:@"FirstName"],[contactInfo objectForKey:@"LastName"],nil];
+        nameLabel.text = [[[NSString alloc] initWithFormat:@"%@ %@",[contactInfo objectForKey:@"FirstName"],[contactInfo objectForKey:@"LastName"],nil] autorelease];
         emailLabel.text = [contactInfo objectForKey:@"Email"];
         
     }
@@ -89,6 +89,7 @@
     [emailLabel release];
     [checkinButton release];
     [scanButton release];
+    [contactInfo release];
     [super dealloc];
 }
 - (IBAction)checkinButtonPressed:(UIButton *)sender {
@@ -99,12 +100,6 @@
      NSDictionary *updatedFields = [NSDictionary dictionaryWithObjectsAndKeys:@"Attended", @"Status__c", nil];
     SFRestRequest *request = [[SFRestAPI sharedInstance] requestForUpdateWithObjectType:@"Presence__c" objectId:presenceToUpdate fields:updatedFields];
     [[SFRestAPI sharedInstance] send:request delegate:self];
-    // requestForUpdateWithObjectType does not return a json.
-    
-    // second request to confirm change in status
-    /* NSString *confirmationQuery = [NSString stringWithFormat:@"Select id, Status__c  From Presence__c WHERE ID = '%@'",presenceToUpdate];
-    SFRestRequest *requestToConfirmUpdate = [[SFRestAPI sharedInstance] requestForQuery:confirmationQuery];
-    [[SFRestAPI sharedInstance] send:requestToConfirmUpdate delegate:self]; */
 }
 
 #pragma mark - SFRestAPIDelegate
@@ -148,13 +143,13 @@
 - (void)alertOnFailedRequest {
     checkinButton.hidden = YES;
 
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops!" message:@"I didn't understand that code." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Oops!" message:@"I didn't understand that code." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] autorelease];
     [alert show];
 }
 
 - (void)failConfirmation {
     checkinButton.hidden = NO;
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"So Sorry!" message:@"I wasn't able to confirm this invite. Try again in a minute." delegate:self cancelButtonTitle:@"D’oh!" otherButtonTitles:nil];
+    UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"So Sorry!" message:@"I wasn't able to confirm this invite. Try again in a minute." delegate:self cancelButtonTitle:@"D’oh!" otherButtonTitles:nil] autorelease];
     [alert show];
 }
 
@@ -162,7 +157,7 @@
     checkinButton.hidden = YES;
 
     NSString *sucessMessage = [NSString stringWithFormat:@"%@ is checked in.",[contactInfo objectForKey:@"FirstName"]];
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sucess!" message:sucessMessage delegate:self cancelButtonTitle:@"Thank You" otherButtonTitles: nil];
+    UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Sucess!" message:sucessMessage delegate:self cancelButtonTitle:@"Thank You" otherButtonTitles: nil] autorelease];
     [alert show];
     
     nameLabel.text = @"Scan to Check-In";
