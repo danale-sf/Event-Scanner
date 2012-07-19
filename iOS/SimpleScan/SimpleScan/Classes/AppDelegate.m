@@ -24,7 +24,6 @@
 
 #import "AppDelegate.h"
 #import "RootViewController.h"
-#import "LaunchViewController.h"
 
 /*
  NOTE if you ever need to update these, you can obtain them from your Salesforce org,
@@ -62,7 +61,7 @@ static NSString *const OAuthRedirectURI = @"https://login.salesforce.com/service
 //NOTE be sure to call all super methods you override.
 
 - (UIViewController*)newRootViewController {
-    LaunchViewController *rootVC = [[LaunchViewController alloc] initWithNibName:@"launchViewController" bundle:nil];
+    RootViewController *rootVC = [[RootViewController alloc] initWithNibName:@"RootViewController" bundle:nil];
     // UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:rootVC];
 
     // [rootVC release];
