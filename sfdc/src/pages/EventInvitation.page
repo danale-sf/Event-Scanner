@@ -1,0 +1,122 @@
+<apex:page standardController="Contact" extensions="EventInvitationController" tabStyle="Event_Invitation__tab" recordSetVar="contacts">
+
+<apex:pageMessages />
+
+   <apex:form >
+       <!--Begin Event Panel-->
+       <apex:outputPanel id="eventPanel" rendered="{!showEventPanel}">
+           <apex:pageBlock >
+               <apex:pageBlockSection title="Define Event">
+                   <apex:inputField value="{!newEvent.Event_Name__c}"/>
+                   <apex:inputField value="{!newEvent.Subject}"/>
+                   <apex:inputField value="{!newEvent.StartDateTime}"/>
+                   <apex:inputField value="{!newEvent.EndDateTime}"/>
+                   <apex:inputField value="{!newEvent.Description}"/>
+                   <apex:pageBlockSectionItem >
+                       <apex:outputLabel value="Event Owner"/>
+                       <apex:inputField value="{!newEvent.WhoId}"/>
+                   </apex:pageBlockSectionItem>
+                   
+               </apex:pageBlockSection>
+               <apex:pageBlockButtons location="bottom">
+                   <apex:commandButton value="Cancel" action="{!cancelEvent}"></apex:commandButton>
+                   <apex:commandButton value="Save and Pick Invitees" action="{!saveEvent}"></apex:commandButton>
+               </apex:pageBlockButtons>
+           </apex:pageBlock>
+       </apex:outputPanel>
+       <!--End Event Panel-->
+              
+       <!-- Begin Contacts Panel-->       
+       <apex:outputPanel id="ContactsPanel" rendered="{!showContactPanel}">
+            
+         <apex:pageBlock id="ContactsBlock" title="Pick Contacts to Invite">
+             <!--Begin List View selection-->
+             <apex:outputLabel value="Select a list view"/>
+             <apex:selectList value="{!filterId}" size="1">
+                <apex:actionSupport event="onchange" rerender="contactsToInvite" >
+                  
+                </apex:actionSupport>
+                <apex:selectOptions value="{!listviewoptions}"></apex:selectOptions>
+            </apex:selectList>
+            <apex:outputLink value="/ui/list/FilterEditPage?ftype=c&retURL=%2F003&cancelURL=%2F003%2Fo" target="_blank">Click here to create a new List View</apex:outputLink>
+            <!--End List View selection-->
+            
+            <apex:pageBlockButtons location="top">
+                <apex:actionStatus id="previousWaitingMessage" >
+                  <apex:facet name="start">    
+                     <img class="waitingImage" src="/img/loading.gif"></img>
+                  </apex:facet>
+                </apex:actionStatus>
+                 <apex:commandLink value="Previous " rendered="{!hasPreviousPage}" rerender="ContactsBlock"  action="{!previousPage}" immediate="true"  status="previousWaitingMessage" onclick="uncheck('{!$Component.ContactsBlock.contactsToInvite.selectAll}')"></apex:commandLink>
+                <apex:commandButton value="Invite Selected" action="{!processInvitation}" ></apex:commandButton>  
+                <apex:commandLink value="Next" rendered="{!hasNextPage}" rerender="ContactsBlock"  action="{!nextPage}" immediate="true"  status="nextWaitingMessage" onclick="uncheck('{!$Component.ContactsBlock.contactsToInvite.selectAll}')"></apex:commandLink>
+                <apex:actionStatus id="nextWaitingMessage" >
+                  <apex:facet name="start">    
+                     <img class="waitingImage" src="/img/loading.gif"></img>
+                  </apex:facet>
+              </apex:actionStatus>
+               
+            </apex:pageBlockButtons>
+      <!-- Begin Contacts list to display-->
+        <apex:actionRegion >
+          <apex:pageBlockTable value="{!contactsToDisplay}" var="wc" id="contactsToInvite">
+            <apex:column headerValue="Select">
+              <apex:facet name="header" >
+                <apex:inputCheckbox onclick="checkAll('{!$Component.selectAll}','{!$Component.contactsToInvite}')" id="selectAll">
+                </apex:inputCheckbox>
+                    
+              </apex:facet>
+              <apex:inputCheckbox value="{!wc.isSelected}" id="select"/>
+            </apex:column>
+            
+            <apex:column >
+              <apex:facet name="header">
+                <apex:outputText value="Contact Name"/>
+              </apex:facet>
+              <apex:outputLink title="Contact Name" value="/{!wc.c.id}" target="_blank">{!wc.c.Name}</apex:outputLink>
+              
+            </apex:column>
+            <apex:column >
+              <apex:facet name="header">
+                <apex:outputText value="Email"/>
+              </apex:facet>
+              <apex:outputText value="{!wc.c.Email}"/>
+            </apex:column>
+            <apex:column >
+              <apex:facet name="header">
+                <apex:outputText value="Phone"/>
+              </apex:facet>
+              <apex:outputText value="{!wc.c.Phone}"/>
+            </apex:column>
+            
+           </apex:pageBlockTable>
+         </apex:actionRegion>
+         <!-- End Contacts list to display-->
+         
+       </apex:pageBlock>
+     </apex:outputPanel>
+     <!-- End Contacts Panel-->
+          
+     <!-- Begin Confirmation Panel-->
+     <apex:outputPanel id="confirmationPanel" rendered="{!showConfirmationPanel}">
+        <h2>You have successfully sent the invite to {!invitationCount} Contacts!</h2>
+        <br></br>
+        <h3>Click <apex:outputLink value="/{!newEvent.id}">here</apex:outputLink> to view your Event</h3>
+     </apex:outputPanel>
+     <!-- End Confirmation Panel-->
+          
+   </apex:form>
+  
+   
+   <script>
+       function checkAll(cb,table){
+           for (i=0; i<document.getElementById(table).rows.length; i++){
+               var el = table+':'+i+':select';
+               document.getElementById(el).checked=document.getElementById(cb).checked;
+           }
+         }  
+      function uncheck(cb){
+         document.getElementById(cb).checked=false;
+      }
+   </script>
+</apex:page>

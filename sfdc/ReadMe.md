@@ -1,4 +1,3 @@
 # SalesForce Project Readme
 
-Stuff goes here.
-
+This Eclipse project should be installed in your SFDC org.
