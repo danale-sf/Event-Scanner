@@ -80,7 +80,7 @@
     // do something useful with results
     for(ZBarSymbol *sym in syms) {
         
-        scannedText = [[NSString alloc] initWithFormat:@"%@",sym.data];
+        scannedText = [[NSString alloc] initWithFormat:sym.data];
         NSLog(@"My scan results: %@",scannedText);
 
         resultText.text = scannedText;
@@ -157,7 +157,6 @@
 - (void)alertOnFailedRequest {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops!" message:@"I didn't understand that code." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alert show];
-    [alert release];
 }
 
 
