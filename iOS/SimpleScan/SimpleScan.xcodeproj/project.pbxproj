@@ -11,6 +11,8 @@
 		0F2FCA9615B6364600C34875 /* cancel_button_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F2FCA9215B6364600C34875 /* cancel_button_down@2x.png */; };
 		0F2FCA9715B6364600C34875 /* cancel_button_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F2FCA9315B6364600C34875 /* cancel_button_normal.png */; };
 		0F2FCA9815B6364600C34875 /* cancel_button_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F2FCA9415B6364600C34875 /* cancel_button_normal@2x.png */; };
+		0F52996F15B8C91C00683C79 /* navigation_bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F52996D15B8C91C00683C79 /* navigation_bar.png */; };
+		0F52997015B8C91C00683C79 /* navigation_bar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F52996E15B8C91C00683C79 /* navigation_bar@2x.png */; };
 		0F564F1915B385C800484006 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F564F1815B385C800484006 /* CoreData.framework */; };
 		0F564F1B15B385C800484006 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F564F1A15B385C800484006 /* SystemConfiguration.framework */; };
 		0F564F1D15B385C800484006 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F564F1C15B385C800484006 /* Security.framework */; };
@@ -104,6 +106,8 @@
 		0F2FCA9215B6364600C34875 /* cancel_button_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancel_button_down@2x.png"; sourceTree = "<group>"; };
 		0F2FCA9315B6364600C34875 /* cancel_button_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cancel_button_normal.png; sourceTree = "<group>"; };
 		0F2FCA9415B6364600C34875 /* cancel_button_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancel_button_normal@2x.png"; sourceTree = "<group>"; };
+		0F52996D15B8C91C00683C79 /* navigation_bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navigation_bar.png; sourceTree = "<group>"; };
+		0F52996E15B8C91C00683C79 /* navigation_bar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigation_bar@2x.png"; sourceTree = "<group>"; };
 		0F564F1415B385C800484006 /* SimpleScan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleScan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F564F1815B385C800484006 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		0F564F1A15B385C800484006 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -592,6 +596,8 @@
 		0F564FA115B385C800484006 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0F52996D15B8C91C00683C79 /* navigation_bar.png */,
+				0F52996E15B8C91C00683C79 /* navigation_bar@2x.png */,
 				0F69EC2915B64D3D005D1E44 /* pass_card.png */,
 				0F69EC2A15B64D3D005D1E44 /* pass_card@2x.png */,
 				0F2FCA9115B6364600C34875 /* cancel_button_down.png */,
@@ -825,6 +831,8 @@
 				0F2FCA9815B6364600C34875 /* cancel_button_normal@2x.png in Resources */,
 				0F69EC2B15B64D3D005D1E44 /* pass_card.png in Resources */,
 				0F69EC2C15B64D3D005D1E44 /* pass_card@2x.png in Resources */,
+				0F52996F15B8C91C00683C79 /* navigation_bar.png in Resources */,
+				0F52997015B8C91C00683C79 /* navigation_bar@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
