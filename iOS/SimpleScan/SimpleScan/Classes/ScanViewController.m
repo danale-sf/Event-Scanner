@@ -34,7 +34,7 @@
 {
     [super viewDidLoad];
     
-    self.title = @"Scan";
+    self.title = @"Simple Scan";
     readerView.readerDelegate = self;
     
     // you can use this to support the simulator

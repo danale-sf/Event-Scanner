@@ -36,6 +36,11 @@
 {
     [super viewDidLoad];
     self.title = @"Simple Scan";
+
+    UINavigationBar *navBar = [[self navigationController] navigationBar];
+    UIImage *backgroundImage = [UIImage imageNamed:@"navigation_bar"];
+    [navBar setBackgroundImage:backgroundImage forBarMetrics:UIBarMetricsDefault];
+
     checkinButton.hidden = YES;
     // Do any additional setup after loading the view from its nib.
 }

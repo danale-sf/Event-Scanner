@@ -62,11 +62,17 @@ static NSString *const OAuthRedirectURI = @"https://login.salesforce.com/service
 
 - (UIViewController*)newRootViewController {
     RootViewController *rootVC = [[RootViewController alloc] initWithNibName:@"RootViewController" bundle:nil];
+    
     // UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:rootVC];
 
     // [rootVC release];
     
     return rootVC;
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 @end

@@ -53,11 +53,7 @@
 #pragma mark - View lifecycle
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-    UINavigationBar *navBar = [[self navigationController] navigationBar];
-    UIImage *backgroundImage = [UIImage imageNamed:@"navigator_bar.png"];
-    [navBar setBackgroundImage:backgroundImage forBarMetrics:UIBarMetricsDefault];
-    
+    [super viewDidLoad];    
     self.title = @"";
     LaunchViewController *launchView = [[[LaunchViewController alloc] init] autorelease];
     [self pushViewController:launchView animated:NO];
