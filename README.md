@@ -5,9 +5,9 @@ A simple event scanner to demonstrate the sfdc mobile sdk
 ### We built a multiple-contact invite list in SalesForce & an iOS app that can check in invitees.
 
 **Known Issue**
-App does not currently build in iOS 6 SDK. (I'm checking with Apple on this.)
+App is updated to iOS 6 and Xcode 4.5.
 
-Stick with Xcode 4.3 and iOS 5.1 SDK.
+If you see compiler errors, use Xcode 4.5 or revert the compiler settings in Xcode 4.3
 
 How It Works
 ===
